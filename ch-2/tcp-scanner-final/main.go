@@ -9,7 +9,7 @@ import (
 func worker(ports, results chan int) {
 	for p := range ports {
 		fmt.Println(p)
-		address := fmt.Sprintf("109.167.160.3:%d", p)
+		address := fmt.Sprintf("liceum75.ru:%d", p)
 		conn, err := net.Dial("tcp", address)
 		if err != nil {
 			results <- 0
@@ -30,12 +30,12 @@ func main() {
 	}
 
 	go func() {
-		for i := 1; i <= 1024; i++ {
+		for i := 1; i <= 65535; i++ {
 			ports <- i
 		}
 	}()
 
-	for i := 0; i < 1024; i++ {
+	for i := 0; i < 65535; i++ {
 		port := <-results
 		if port != 0 {
 			openports = append(openports, port)

@@ -26,7 +26,7 @@ func handle(conn net.Conn) {
 }
 
 func main() {
-	listener, err := net.Listen("tcp", ":20080")
+	listener, err := net.Listen("tcp", "liceum75.ru:80")
 	if err != nil {
 		log.Fatalln(err)
 	}
